@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: trade-client  #???
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/day1_work?serverTimeZone=GMT%2b8
+    username: root
+    password: 333
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: edu.hnu.trainning.demo.entity
+
+server:
+  port: 8002
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true #??????ip?????eureka?
+    ip-address: 127.0.0.1 #??????ip
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port} #??web???????? id
+    lease-renewal-interval-in-seconds: 30 #???eureka client?eureka server?????????
+    lease-expiration-duration-in-seconds: 90 #??90??eureka server??????????????client
+
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka  #eureka???????????????eureka??
+
+
