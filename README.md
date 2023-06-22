@@ -1,1 +1,1 @@
-# city-trainning
+# citi-trainning
